@@ -25,7 +25,7 @@ include_once( YOUR_PLUGIN_PATH . 'includes/libraries/rocketgeek-akismet-api/rock
 Once the library is included, you can call it in your project.
 
 ```
-RocketGeek_Akismet_API::init();
+$my_object = new RocketGeek_Akismet_API;
 ```
 
 Initializing it like the above will initialize with all default settings.  You can override certain defaults by passing them as an array of arguments when you initilize the library as follows:
@@ -44,23 +44,23 @@ $args = array(
 	'test_akismet' => true,
 	'api_key_option' => 'my_custom_api_key_option_name',
 );
-RocketGeek_Akismet_API::init( $args );
+$my_object = new RocketGeek_Akismet_API( $args );
 ```
 
 Once initialized in your application, there are some variables you can access and some methods you can use.
 
-`RocketGeek_Akismet_API::get_api_key()` Retrieves the saved API key.  (Note: if Akismet's WordPress plugin is installed, it will default to that plugin's API key so you don't need to save it a second time for your custom application).
+`$my_object->get_api_key()` Retrieves the saved API key.  (Note: if Akismet's WordPress plugin is installed, it will default to that plugin's API key so you don't need to save it a second time for your custom application).
 
-`RocketGeek_Akismet_API::reg_validate( $args )` Validates a registration to see if Akismet thinks it is spam.  All `$args` are optional:
-* 'user_ip' The user's IP address, defaults to use `RocketGeek_Akismet_API::get_user_ip()`
+`$my_object->reg_validate( $args )` Validates a registration to see if Akismet thinks it is spam.  All `$args` are optional:
+* 'user_ip' The user's IP address, defaults to use `$my_object->get_user_ip()`
 * 'user_email' Optional, no default
 * 'user_login' Optional, no default
 
-`RocketGeek_Akismet_API::get_user_ip()` Gets the user's IP address.
+`$my_object->get_user_ip()` Gets the user's IP address.
 
-`RocketGeek_Akismet_API::verify_key( $key )` Validates an Akisment API key.
+`$my_object->verify_key( $key )` Validates an Akisment API key.
 
-`RocketGeek_Akismet_API::save_key( $key )` Saves a given API key. Default save is to option name "rktgk_akismet_api_key" unless `$api_key_option` is passed with the init arguments or Akismet's WP plugin is installed, activated, and has an API key saved.
+`$my_object->save_key( $key )` Saves a given API key. Default save is to option name "rktgk_akismet_api_key" unless `$api_key_option` is passed with the init arguments or Akismet's WP plugin is installed, activated, and has an API key saved.
 
 
 ## Built With
