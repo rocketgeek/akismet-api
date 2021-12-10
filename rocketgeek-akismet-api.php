@@ -5,8 +5,8 @@
  * Provides a class to check Akismet's API in WordPress plugins and themes.  
  * See the readme.md for initial instructions.
  *
- * This library is open source and GPL licensed. I hope you find it useful
- * for your project(s). Attribution is appreciated ;-)
+ * This library is open source and Apache-2.0 licensed. I hope you find it 
+ * useful for your project(s). Attribution is appreciated ;-)
  *
  * @package    RocketGeek_Akismet_API
  * @version    1.1.0
@@ -15,7 +15,7 @@
  * @link       https://github.com/rocketgeek/akismet_api/
  * @author     Chad Butler <https://butlerblog.com>
  * @author     RocketGeek <https://rocketgeek.com>
- * @copyright  Copyright (c) 2021 Chad Butler
+ * @copyright  Copyright (c) 2019-2021 Chad Butler
  * @license    Apache-2.0
  *
  * Copyright [2021] Chad Butler, RocketGeek
