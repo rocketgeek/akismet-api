@@ -50,6 +50,7 @@ class RocketGeek_Akismet_API {
 	public $default_enabled = true;
 	public $text_domain = 'rktgk-akismet-api';
 	public $test_akismet = false;
+	public $stem = "rktgk_akismet";
 	
 	/**
 	 * Plugin initialization function.
@@ -74,6 +75,7 @@ class RocketGeek_Akismet_API {
 		$this->text_domain     = ( isset( $args['text_domain']     ) ) ? $args['text_domain']     : $this->text_domain; // @todo Temporary until I figure out something better.
 		$this->test_akismet    = ( isset( $args['test_akismet']    ) ) ? $args['test_akismet']    : $this->test_akismet;
 		$this->api_key         = ( isset( $args['api_key']         ) ) ? $args['api_key']         : $this->get_api_key();  // Do this last so that the option name is correctly set.
+		$this->stem            = ( isset( $args['stem']            ) ) ? $args['stem']            : $this->stem;
 	
 		// Load hooks.
 		if ( true === $this->default_enabled ) {
@@ -139,7 +141,23 @@ class RocketGeek_Akismet_API {
 
 			// Add error if conditional returns true
 			if ( $this->is_spam( $ip, $user_email, $sanitized_user_login ) ) {
-				$errors->add( 'likely_spammer', __( '<strong>ERROR</strong>: Cannot register. Please contact site administrator for assistance.', $this->text_domain ) );
+				/**
+				 * Filter the error message.
+				 * 
+				 * @since 1.1.0
+				 * 
+				 * @param  array  $error_values  {
+				 *     The values for the error message
+				 * 
+				 *     @type string $tag     The message tag
+				 *     @type string $message The message
+				 * }
+				 */
+				$error_values = apply_filters( $this->stem . 'error_msg', array(
+					'tag'     => 'likely_spammer',
+					'message' => __( '<strong>ERROR</strong>: Cannot register. Please contact site administrator for assistance.', $this->text_domain ),
+				));
+				$errors->add( $error_values['tag'], $error_values['message'] );
 			}
 		}
 
