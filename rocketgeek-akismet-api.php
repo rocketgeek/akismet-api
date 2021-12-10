@@ -42,7 +42,7 @@ if ( ! class_exists( 'RocketGeek_Akismet_API' ) ):
 
 class RocketGeek_Akismet_API {
 	
-	public $version = '1.0.0';
+	public $version = '1.1.0';
 	public $api_endpoint = '<key>.rest.akismet.com';
 	public $blog;
 	public $api_key_option = 'rktgk_akismet_api_key';
@@ -67,7 +67,7 @@ class RocketGeek_Akismet_API {
 	 *     @type string   $test_akismet
 	 * }
 	 */
-	public function __construct( $args ) { //$default_enabled = true, $api_key = false ) {
+	public function __construct( $args ) {
 
 		$this->blog = get_option( 'home' );
 		$this->default_enabled = ( isset( $args['default_enabled'] ) ) ? $args['default_enabled'] : $this->default_enabled;
@@ -117,9 +117,9 @@ class RocketGeek_Akismet_API {
 	 */
 	public function reg_validate( $args ) {
 		
-		$user_ip    = ( isset( $args['user_ip'] ) ) ? $args['user_ip'] : $this->get_user_ip(); // Required
-		$user_email = ( isset( $args['user_email'] ) ) ? $args['user_email'] : false;         // Optional
-		$user_login = ( isset( $args['user_login'] ) ) ? $args['user_login'] : false;         // Optional
+		$user_ip    = ( isset( $args['user_ip']    ) ) ? $args['user_ip']    : $this->get_user_ip(); // Required
+		$user_email = ( isset( $args['user_email'] ) ) ? $args['user_email'] : false; // Optional
+		$user_login = ( isset( $args['user_login'] ) ) ? $args['user_login'] : false; // Optional
 		
 		return ( true === $this->is_spam( $user_ip, $user_email, $user_login ) ) ? false : true;
 	}
@@ -213,11 +213,11 @@ class RocketGeek_Akismet_API {
 	public function is_spam( $ip, $email = false, $username = false ) {
 
 		$data = array(
-			'blog'                 => $this->blog,
-			'user_ip'              => $ip,
-			'user_agent'           => $_SERVER['HTTP_USER_AGENT'],
-			'referrer'             => $_SERVER['HTTP_REFERER'],
-			'comment_type'         => 'signup',
+			'blog'         => $this->blog,
+			'user_ip'      => $ip,
+			'user_agent'   => $_SERVER['HTTP_USER_AGENT'],
+			'referrer'     => $_SERVER['HTTP_REFERER'],
+			'comment_type' => 'signup',
 		);
 		
 		if ( $email ) {		

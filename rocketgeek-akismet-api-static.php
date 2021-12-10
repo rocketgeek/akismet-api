@@ -42,7 +42,7 @@ if ( ! class_exists( 'RocketGeek_Akismet_API' ) ):
 
 class RocketGeek_Akismet_API {
 	
-	public static $version = '1.0.0';
+	public static $version = '1.1.0';
 	public static $api_key_option = 'rktgk_akismet_api_key';
 	public static $api_key;
 	public static $api_endpoint = '<key>.rest.akismet.com';
