@@ -3,16 +3,16 @@
  * RocketGeek RocketGeek_Akismet_API Library
  *
  * @package    RocketGeek_Akismet_API
- * @version    1.1.0
+ * @version    1.1.1
  *
  * @link       https://akismet.com/development/api/
  * @link       https://github.com/rocketgeek/akismet_api/
  * @author     Chad Butler <https://butlerblog.com>
  * @author     RocketGeek <https://rocketgeek.com>
- * @copyright  Copyright (c) 2019-2021 Chad Butler
+ * @copyright  Copyright (c) 2019-2022 Chad Butler
  * @license    Apache-2.0
  *
- * Copyright [2021] Chad Butler, RocketGeek
+ * Copyright [2022] Chad Butler, RocketGeek
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
